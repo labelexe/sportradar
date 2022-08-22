@@ -1,5 +1,13 @@
 package sportradar
 
+type GameStatus string
+
+const (
+	GameStatusScheduled  GameStatus = "scheduled"
+	GameStatusClosed     GameStatus = "closed"
+	GameStatusInProgress GameStatus = "inprogress"
+)
+
 type Location struct {
 	Latitude  string `json:"lat"`
 	Longitude string `json:"lng"`
