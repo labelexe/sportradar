@@ -158,7 +158,7 @@ func srMLBDailySummaryConvert(d srMLBDailySummary) MLBDailySummary {
 	}
 }
 
-var sportradarMLBDailySummaryURLTemplate string = "http://api.sportradar.us/mlb/trial/v7/en/games/%d/%d/%d/summary.json?api_key=%s" // year, month, day, apiKey
+var sportradarMLBDailySummaryURLTemplate string = "http://api.sportradar.us/mlb/production/v7/en/games/%d/%d/%d/summary.json?api_key=%s" // year, month, day, apiKey
 
 func mlbDailySummaryURL(t time.Time, apiKey string) string {
 	return fmt.Sprintf(sportradarMLBDailySummaryURLTemplate, t.Year(), t.Month(), t.Day(), apiKey)
