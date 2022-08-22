@@ -8,6 +8,16 @@ const (
 	GameStatusInProgress GameStatus = "inprogress"
 )
 
+func parseGameStatus(s string) GameStatus {
+	if s == string(GameStatusScheduled) {
+		return GameStatusScheduled
+	} else if s == string(GameStatusInProgress) {
+		return GameStatusInProgress
+	} else {
+		return GameStatusClosed
+	}
+}
+
 type Location struct {
 	Latitude  string `json:"lat"`
 	Longitude string `json:"lng"`
