@@ -6,8 +6,6 @@ import (
 	"io/ioutil"
 	"net/http"
 	"time"
-
-	"github.com/rs/zerolog/log"
 )
 
 type srMLBGameSummary struct {
@@ -188,7 +186,6 @@ func FetchMLBDailySummary(t time.Time, apiKey string) (MLBDailySummary, error) {
 		return MLBDailySummary{}, err
 	}
 
-	log.Info().Msgf("sport radar resp: %s", string(respBytes))
 	summary := srMLBDailySummary{}
 	err = json.Unmarshal(respBytes, &summary)
 	if err != nil {
