@@ -8,6 +8,10 @@ import (
 	"time"
 )
 
+type srMLBGameSummaryMap struct {
+	Game srMLBGameSummary `json:"game"`
+}
+
 type srMLBGameSummary struct {
 	ID           string           `json:"id"`
 	Status       string           `json:"status"`
@@ -67,10 +71,10 @@ func srMLBGameSummaryConvert(d srMLBGameSummary) MLBGameSummary {
 	}
 }
 
-func srMLBGameSummaryBatchConvert(b []srMLBGameSummary) []MLBGameSummary {
+func srMLBGameSummaryBatchConvert(b []srMLBGameSummaryMap) []MLBGameSummary {
 	out := make([]MLBGameSummary, 0, len(b))
 	for _, d := range b {
-		out = append(out, srMLBGameSummaryConvert(d))
+		out = append(out, srMLBGameSummaryConvert(d.Game))
 	}
 	return out
 }
@@ -114,11 +118,11 @@ func srMLBTeamSummaryConvert(d srMLBTeamSummary) MLBTeamSummary {
 }
 
 type srMLBLeagueSummary struct {
-	Alias string             `json:"alias"`
-	Name  string             `json:"name"`
-	ID    string             `json:"id"`
-	Date  string             `json:"date"`
-	Games []srMLBGameSummary `json:"games"`
+	Alias string                `json:"alias"`
+	Name  string                `json:"name"`
+	ID    string                `json:"id"`
+	Date  string                `json:"date"`
+	Games []srMLBGameSummaryMap `json:"games"`
 }
 
 type MLBLeagueSummary struct {
