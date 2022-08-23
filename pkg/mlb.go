@@ -168,6 +168,7 @@ func mlbDailySummaryURL(t time.Time, apiKey string) string {
 
 func FetchMLBDailySummary(t time.Time, apiKey string) (MLBDailySummary, error) {
 	url := mlbDailySummaryURL(t, apiKey)
+	fmt.Printf("daily summary url: %s", url)
 	req, err := http.NewRequest(http.MethodGet, url, nil)
 	if err != nil {
 		return MLBDailySummary{}, err
