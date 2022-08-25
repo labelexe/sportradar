@@ -13,7 +13,7 @@ const nflKey = "usdsgdvez9tbdfmk38yhv3ar"
 
 func TestMLBDailySummary(t *testing.T) {
 	client := NewClient(ClientConfig{
-		Keys: LeageuKeys{
+		Keys: LeagueKeys{
 			MLB: mlbKey,
 		},
 	})
@@ -28,7 +28,7 @@ func TestMLBDailySummary(t *testing.T) {
 
 func TestMLBSchedule(t *testing.T) {
 	client := NewClient(ClientConfig{
-		Keys: LeageuKeys{
+		Keys: LeagueKeys{
 			MLB: mlbKey,
 		},
 	})
@@ -45,7 +45,7 @@ func TestMLBSchedule(t *testing.T) {
 
 func TestNFLSchedule(t *testing.T) {
 	client := NewClient(ClientConfig{
-		Keys: LeageuKeys{
+		Keys: LeagueKeys{
 			NFL: nflKey,
 		},
 	})
