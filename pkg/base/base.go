@@ -1,4 +1,12 @@
-package sportradar
+package base
+
+type SeasonType string
+
+const (
+	SeasonTypePre     SeasonType = "PRE"
+	SeasonTypeRegular SeasonType = "Reg"
+	SeasonTypePost    SeasonType = "PST"
+)
 
 type GameStatus string
 
