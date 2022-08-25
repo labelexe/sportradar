@@ -150,7 +150,7 @@ func FetchSchedule(c http.Client, t time.Time, st sr.SeasonType, apiKey string) 
 	schedule := srSchedule{}
 	err = json.Unmarshal(respBytes, &schedule)
 	if err != nil {
-		return Schedule{}, nil
+		return Schedule{}, err
 	}
 
 	return srScheduleConvert(schedule), nil

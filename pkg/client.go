@@ -6,6 +6,7 @@ import (
 
 	sr "github.com/playback-sports/sportradar/pkg/base"
 	"github.com/playback-sports/sportradar/pkg/mlb"
+	"github.com/playback-sports/sportradar/pkg/nfl"
 )
 
 type LeageuKeys struct {
@@ -37,4 +38,8 @@ func (c Client) MLBDailySummary(t time.Time) (mlb.DailySummary, error) {
 
 func (c Client) MLBSchedule(t time.Time, st sr.SeasonType) (mlb.Schedule, error) {
 	return mlb.FetchSchedule(c.c, t, st, c.cfg.Keys.MLB)
+}
+
+func (c Client) NFLSchedule(t time.Time, st sr.SeasonType) (nfl.Schedule, error) {
+	return nfl.FetchSchedule(c.c, t, st, c.cfg.Keys.NFL)
 }

@@ -8,6 +8,16 @@ const (
 	SeasonTypePost    SeasonType = "PST"
 )
 
+func ParseSeasonType(s string) SeasonType {
+	if s == string(SeasonTypePre) {
+		return SeasonTypePre
+	} else if s == string(SeasonTypeRegular) {
+		return SeasonTypeRegular
+	} else {
+		return SeasonTypePost
+	}
+}
+
 type GameStatus string
 
 const (

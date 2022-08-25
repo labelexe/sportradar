@@ -1,23 +1,15 @@
 package sportradar
 
 import (
-	"encoding/json"
 	"testing"
 	"time"
 
 	sr "github.com/playback-sports/sportradar/pkg/base"
-	"github.com/stretchr/testify/assert"
+	assert "github.com/stretchr/testify/require"
 )
 
 const mlbKey = "cms9sf848zh9tnptnp62m3ts"
-
-func PrettyStruct(data interface{}) (string, error) {
-	val, err := json.MarshalIndent(data, "", "    ")
-	if err != nil {
-		return "", err
-	}
-	return string(val), nil
-}
+const nflKey = "usdsgdvez9tbdfmk38yhv3ar"
 
 func TestMLBDailySummary(t *testing.T) {
 	client := NewClient(ClientConfig{
@@ -42,11 +34,28 @@ func TestMLBSchedule(t *testing.T) {
 	})
 
 	now := time.Now()
-	summary, err := client.MLBSchedule(now, sr.SeasonTypeRegular)
+	schedule, err := client.MLBSchedule(now, sr.SeasonTypeRegular)
 	assert.NoError(t, err)
-	assert.Equal(t, "MLB", summary.League.Alias)
-	assert.True(t, len(summary.Games) > 1)
-	assert.NotEmpty(t, summary.Games[0].ID)
-	assert.NotEmpty(t, summary.Games[0].Broadcast)
-	assert.NotEmpty(t, summary.Games[0].Broadcast.Network)
+	assert.Equal(t, "MLB", schedule.League.Alias)
+	assert.True(t, len(schedule.Games) > 1)
+	assert.NotEmpty(t, schedule.Games[0].ID)
+	assert.NotEmpty(t, schedule.Games[0].Broadcast)
+	assert.NotEmpty(t, schedule.Games[0].Broadcast.Network)
+}
+
+func TestNFLSchedule(t *testing.T) {
+	client := NewClient(ClientConfig{
+		Keys: LeageuKeys{
+			NFL: nflKey,
+		},
+	})
+
+	now := time.Now()
+	schedule, err := client.NFLSchedule(now, sr.SeasonTypeRegular)
+	assert.NoErrorf(t, err, "%s", err)
+	assert.NotEmpty(t, schedule.ID)
+	assert.True(t, len(schedule.Weeks) > 1)
+	assert.NotEmpty(t, schedule.Weeks[0].ID)
+	assert.NotEmpty(t, schedule.Weeks[0].Games)
+	assert.NotEmpty(t, schedule.Weeks[0].Games[0].ID)
 }

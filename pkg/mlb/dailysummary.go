@@ -193,7 +193,7 @@ func FetchDailySummary(c http.Client, t time.Time, apiKey string) (DailySummary,
 	summary := srDailySummary{}
 	err = json.Unmarshal(respBytes, &summary)
 	if err != nil {
-		return DailySummary{}, nil
+		return DailySummary{}, err
 	}
 
 	return srDailySummaryConvert(summary), nil
