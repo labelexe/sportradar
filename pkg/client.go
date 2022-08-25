@@ -9,7 +9,7 @@ import (
 	"github.com/playback-sports/sportradar/pkg/nfl"
 )
 
-type LeageuKeys struct {
+type LeagueKeys struct {
 	MLB string
 	NFL string
 }
@@ -20,7 +20,7 @@ type Client struct {
 }
 
 type ClientConfig struct {
-	Keys LeageuKeys
+	Keys LeagueKeys
 }
 
 func NewClient(cfg ClientConfig) Client {
