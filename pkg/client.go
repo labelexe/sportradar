@@ -1,6 +1,7 @@
 package sportradar
 
 import (
+	"github.com/playback-sports/sportradar/pkg/nba"
 	"net/http"
 	"time"
 
@@ -12,6 +13,7 @@ import (
 type LeagueKeys struct {
 	MLB string
 	NFL string
+	NBA string
 }
 
 type Client struct {
@@ -42,4 +44,8 @@ func (c Client) MLBSchedule(t time.Time, st sr.SeasonType) (mlb.Schedule, error)
 
 func (c Client) NFLSchedule(t time.Time, st sr.SeasonType) (nfl.Schedule, error) {
 	return nfl.FetchSchedule(c.c, t, st, c.cfg.Keys.NFL)
+}
+
+func (c Client) NBASchedule(t time.Time, st sr.SeasonType) (nba.Schedule, error) {
+	return nba.FetchSchedule(c.c, t, st, c.cfg.Keys.NBA)
 }
