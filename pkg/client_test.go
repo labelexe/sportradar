@@ -12,6 +12,7 @@ const mlbKey = "cms9sf848zh9tnptnp62m3ts"
 const nflKey = "usdsgdvez9tbdfmk38yhv3ar"
 const nbaKey = "ugfpbjbn9d8npnmrhqzq7g49"
 const nhlKey = "msuuhzsh7v3bfqw24m4nze6s"
+const ncaafKey = "rdg8a4vhc3wmqte9jc4gwx52"
 
 func TestMLBDailySummary(t *testing.T) {
 	client := NewClient(ClientConfig{
@@ -60,6 +61,7 @@ func TestNFLSchedule(t *testing.T) {
 	assert.NotEmpty(t, schedule.Weeks[0].ID)
 	assert.NotEmpty(t, schedule.Weeks[0].Games)
 	assert.NotEmpty(t, schedule.Weeks[0].Games[0].ID)
+	assert.NotEmpty(t, schedule.Weeks[0].Games[0].Broadcast)
 }
 
 func TestNBASchedule(t *testing.T) {
@@ -98,4 +100,22 @@ func TestNHLSchedule(t *testing.T) {
 	assert.NotEmpty(t, schedule.Games[0].ID)
 	assert.NotEmpty(t, schedule.Games[0].HomeTeam)
 	assert.NotEmpty(t, schedule.Games[0].AwayTeam)
+}
+
+func TestNCAAFSchedule(t *testing.T) {
+	client := NewClient(ClientConfig{
+		Keys: LeagueKeys{
+			NCAAF: ncaafKey,
+		},
+	})
+
+	now := time.Now()
+	schedule, err := client.NCAAFSchedule(now, sr.SeasonTypeRegular)
+	assert.NoErrorf(t, err, "%s", err)
+	assert.NotEmpty(t, schedule.ID)
+	assert.NotEmpty(t, schedule.Weeks)
+	assert.NotEmpty(t, schedule.Weeks[0].ID)
+	assert.NotEmpty(t, schedule.Weeks[0].Games)
+	assert.NotEmpty(t, schedule.Weeks[0].Games[0].ID)
+	assert.NotEmpty(t, schedule.Weeks[0].Games[0].Broadcast)
 }
