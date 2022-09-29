@@ -46,7 +46,7 @@ var BroadcastNameMap = map[string]dbSports.Network{
 	"CBC":                dbSports.CBC,
 	"CITY":               dbSports.CITY,
 	"CW-23":              dbSports.CW23,
-	"CW-35":              dbSports.CW35,
+	"CW35":               dbSports.CW35,
 	"CBS Sports Network": dbSports.CBSSportsNetwork,
 	"CBS":                dbSports.CBS,
 	"ESPN":               dbSports.ESPN,
