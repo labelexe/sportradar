@@ -32,14 +32,22 @@ type srSeason struct {
 }
 
 type ScheduleGame struct {
-	ID        string         `json:"id"`
-	Status    sr.GameStatus  `json:"status"`
-	Scheduled string         `json:"scheduled"`
-	SrID      string         `json:"sr_id"`
-	GameType  string         `json:"game_type"`
-	Venue     sr.Venue       `json:"venue"`
-	HomeTeam  srScheduleTeam `json:"home"`
-	AwayTeam  srScheduleTeam `json:"away"`
+	ID         string                `json:"id"`
+	Status     sr.GameStatus         `json:"status"`
+	Scheduled  string                `json:"scheduled"`
+	SrID       string                `json:"sr_id"`
+	GameType   string                `json:"game_type"`
+	Venue      sr.Venue              `json:"venue"`
+	HomeTeam   srScheduleTeam        `json:"home"`
+	AwayTeam   srScheduleTeam        `json:"away"`
+	Broadcasts []srScheduleBroadcast `json:"broadcasts"`
+}
+
+type srScheduleBroadcast struct {
+	Network string `json:"network"`
+	Type    string `json:"type"`
+	Locale  string `json:"locale"`
+	Channel string `json:"channel"`
 }
 
 type srScheduleTeam struct {
