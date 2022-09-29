@@ -108,6 +108,7 @@ var BroadcastNameMap = map[string]dbSports.Network{
 	"SEC Network":        dbSports.SECNetwork,
 	"SN1":                dbSports.SN1,
 	"SNET":               dbSports.SNET,
+	"Sportsnet":          dbSports.SNET,
 	"SportsNet":          dbSports.SNET,
 	"SNP":                dbSports.SNP,
 	"SN360":              dbSports.SN360,
