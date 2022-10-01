@@ -100,6 +100,8 @@ func TestNHLSchedule(t *testing.T) {
 	assert.NotEmpty(t, schedule.Games[0].ID)
 	assert.NotEmpty(t, schedule.Games[0].HomeTeam)
 	assert.NotEmpty(t, schedule.Games[0].AwayTeam)
+	assert.NotEmpty(t, schedule.Games[0].Broadcasts)
+	assert.NotEmpty(t, schedule.Games[0].Broadcasts[0].Network)
 }
 
 func TestNCAAFSchedule(t *testing.T) {
