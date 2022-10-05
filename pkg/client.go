@@ -13,11 +13,11 @@ import (
 )
 
 type LeagueKeys struct {
-	MLB   string
-	NFL   string
-	NBA   string
-	NHL   string
-	NCAAF string
+	MLB   string `json:"mlb"`
+	NFL   string `json:"nfl"`
+	NBA   string `json:"nba"`
+	NHL   string `json:"nhl"`
+	NCAAF string `json:"ncaaf"`
 }
 
 type Client struct {
