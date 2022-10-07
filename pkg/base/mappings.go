@@ -36,7 +36,7 @@ var BroadcastNameMap = map[string]dbSports.Network{
 	"BSSEX":              dbSports.BSSEX,
 	"BSSO":               dbSports.BSSO,
 	"BSSUN":              dbSports.BSSUN,
-	"BSSUNX":             dbSports.BSFL,
+	"BSSUNX":             dbSports.BSSUNX,
 	"BSSW":               dbSports.BSSW,
 	"BSSW+":              dbSports.BSSWPlus,
 	"BSSWX":              dbSports.BSSWX,
