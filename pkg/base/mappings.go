@@ -80,6 +80,7 @@ var BroadcastNameMap = map[string]dbSports.Network{
 	"MSGSN":              dbSports.MSGSN,
 	"MSGSN2":             dbSports.MSGSN2,
 	"MSG2":               dbSports.MSG2,
+	"MSG 2":              dbSports.MSG2,
 	"MSG+ 2":             dbSports.MSGPlus2,
 	"MW Network":         dbSports.MWNetwork,
 	"NBA TV":             dbSports.NBA_TV,
