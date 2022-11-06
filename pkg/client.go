@@ -3,6 +3,7 @@ package sportradar
 import (
 	"github.com/playback-sports/sportradar/pkg/nba"
 	"github.com/playback-sports/sportradar/pkg/ncaaf"
+	"github.com/playback-sports/sportradar/pkg/ncaamb"
 	"github.com/playback-sports/sportradar/pkg/nhl"
 	"net/http"
 	"time"
@@ -13,11 +14,12 @@ import (
 )
 
 type LeagueKeys struct {
-	MLB   string `json:"mlb"`
-	NFL   string `json:"nfl"`
-	NBA   string `json:"nba"`
-	NHL   string `json:"nhl"`
-	NCAAF string `json:"ncaaf"`
+	MLB    string `json:"mlb"`
+	NFL    string `json:"nfl"`
+	NBA    string `json:"nba"`
+	NHL    string `json:"nhl"`
+	NCAAF  string `json:"ncaaf"`
+	NCAAMB string `json:"ncaamb"`
 }
 
 type Client struct {
@@ -60,4 +62,8 @@ func (c Client) NHLSchedule(t time.Time, st sr.SeasonType) (nhl.Schedule, error)
 
 func (c Client) NCAAFSchedule(t time.Time, st sr.SeasonType) (ncaaf.Schedule, error) {
 	return ncaaf.FetchSchedule(c.c, t, st, c.cfg.Keys.NCAAF)
+}
+
+func (c Client) NCAAMBSchedule(t time.Time, st sr.SeasonType) (ncaamb.Schedule, error) {
+	return ncaamb.FetchSchedule(c.c, t, st, c.cfg.Keys.NCAAMB)
 }

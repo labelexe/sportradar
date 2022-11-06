@@ -3,7 +3,7 @@ module github.com/playback-sports/sportradar
 go 1.18
 
 require (
-	github.com/playback-sports/db v0.0.0-20221007165200-07e9565a3dc8
+	github.com/playback-sports/db v0.0.0-20221108124821-a6128bcedb35
 	github.com/stretchr/testify v1.8.0
 )
 
