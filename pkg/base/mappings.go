@@ -115,7 +115,7 @@ var BroadcastNameMap = map[string]dbSports.Network{
 	"Prime Video":           dbSports.PrimeVideo,
 	"RDS":                   dbSports.RDS,
 	"RDS2":                  dbSports.RDS2,
-	"RSDI":                  dbSports.RDSI,
+	"RDSI":                  dbSports.RDSI,
 	"ROOT Sports NW":        dbSports.ROOTSportsNW,
 	"ROOT Sports NW+":       dbSports.ROOTSportsNWPlus,
 	"RSN":                   dbSports.ACC_RSN,
