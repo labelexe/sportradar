@@ -6,13 +6,12 @@ import (
 	sr "github.com/playback-sports/sportradar/pkg/base"
 	"io/ioutil"
 	"net/http"
-	"time"
 )
 
 var scheduleURLTemplate = "https://api.sportradar.us/nba/production/v7/en/games/%d/%s/schedule.json?api_key=%s"
 
-func scheduleURL(t time.Time, st sr.SeasonType, apiKey string) string {
-	return fmt.Sprintf(scheduleURLTemplate, t.Year(), st, apiKey)
+func scheduleURL(year int, st sr.SeasonType, apiKey string) string {
+	return fmt.Sprintf(scheduleURLTemplate, year, st, apiKey)
 }
 
 type Schedule struct {
@@ -60,8 +59,8 @@ type srScheduleTeam struct {
 	SrID      string `json:"sr_id"`
 }
 
-func FetchSchedule(c http.Client, t time.Time, st sr.SeasonType, apiKey string) (Schedule, error) {
-	url := scheduleURL(t, st, apiKey)
+func FetchSchedule(c http.Client, year int, st sr.SeasonType, apiKey string) (Schedule, error) {
+	url := scheduleURL(year, st, apiKey)
 	req, err := http.NewRequest(http.MethodGet, url, nil)
 	if err != nil {
 		return Schedule{}, err

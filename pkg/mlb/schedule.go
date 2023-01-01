@@ -3,11 +3,9 @@ package mlb
 import (
 	"encoding/json"
 	"fmt"
+	sr "github.com/playback-sports/sportradar/pkg/base"
 	"io/ioutil"
 	"net/http"
-	"time"
-
-	sr "github.com/playback-sports/sportradar/pkg/base"
 )
 
 type srScheduleLeague struct {
@@ -121,12 +119,12 @@ func srScheduleConvert(schedule srSchedule) Schedule {
 
 var scheduleURLTemplate = "https://api.sportradar.com/mlb/production/v7/en/games/%d/%s/schedule.json?api_key=%s"
 
-func scheduleURL(t time.Time, st sr.SeasonType, apiKey string) string {
-	return fmt.Sprintf(scheduleURLTemplate, t.Year(), st, apiKey)
+func scheduleURL(year int, st sr.SeasonType, apiKey string) string {
+	return fmt.Sprintf(scheduleURLTemplate, year, st, apiKey)
 }
 
-func FetchSchedule(c http.Client, t time.Time, st sr.SeasonType, apiKey string) (Schedule, error) {
-	url := scheduleURL(t, st, apiKey)
+func FetchSchedule(c http.Client, year int, st sr.SeasonType, apiKey string) (Schedule, error) {
+	url := scheduleURL(year, st, apiKey)
 	// fmt.Printf("schedule url: %s", url)
 	req, err := http.NewRequest(http.MethodGet, url, nil)
 	if err != nil {

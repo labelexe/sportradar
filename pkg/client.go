@@ -44,26 +44,26 @@ func (c Client) MLBDailySummary(t time.Time) (mlb.DailySummary, error) {
 	return mlb.FetchDailySummary(c.c, t, c.cfg.Keys.MLB)
 }
 
-func (c Client) MLBSchedule(t time.Time, st sr.SeasonType) (mlb.Schedule, error) {
-	return mlb.FetchSchedule(c.c, t, st, c.cfg.Keys.MLB)
+func (c Client) MLBSchedule(year int, st sr.SeasonType) (mlb.Schedule, error) {
+	return mlb.FetchSchedule(c.c, year, st, c.cfg.Keys.MLB)
 }
 
-func (c Client) NFLSchedule(t time.Time, st sr.SeasonType) (nfl.Schedule, error) {
-	return nfl.FetchSchedule(c.c, t, st, c.cfg.Keys.NFL)
+func (c Client) NFLSchedule(year int, st sr.SeasonType) (nfl.Schedule, error) {
+	return nfl.FetchSchedule(c.c, year, st, c.cfg.Keys.NFL)
 }
 
-func (c Client) NBASchedule(t time.Time, st sr.SeasonType) (nba.Schedule, error) {
-	return nba.FetchSchedule(c.c, t, st, c.cfg.Keys.NBA)
+func (c Client) NBASchedule(year int, st sr.SeasonType) (nba.Schedule, error) {
+	return nba.FetchSchedule(c.c, year, st, c.cfg.Keys.NBA)
 }
 
-func (c Client) NHLSchedule(t time.Time, st sr.SeasonType) (nhl.Schedule, error) {
-	return nhl.FetchSchedule(c.c, t, st, c.cfg.Keys.NHL)
+func (c Client) NHLSchedule(year int, st sr.SeasonType) (nhl.Schedule, error) {
+	return nhl.FetchSchedule(c.c, year, st, c.cfg.Keys.NHL)
 }
 
-func (c Client) NCAAFSchedule(t time.Time, st sr.SeasonType) (ncaaf.Schedule, error) {
-	return ncaaf.FetchSchedule(c.c, t, st, c.cfg.Keys.NCAAF)
+func (c Client) NCAAFSchedule(year int, st sr.SeasonType) (ncaaf.Schedule, error) {
+	return ncaaf.FetchSchedule(c.c, year, st, c.cfg.Keys.NCAAF)
 }
 
-func (c Client) NCAAMBSchedule(t time.Time, st sr.SeasonType) (ncaamb.Schedule, error) {
-	return ncaamb.FetchSchedule(c.c, t, st, c.cfg.Keys.NCAAMB)
+func (c Client) NCAAMBSchedule(year int, st sr.SeasonType) (ncaamb.Schedule, error) {
+	return ncaamb.FetchSchedule(c.c, year, st, c.cfg.Keys.NCAAMB)
 }
