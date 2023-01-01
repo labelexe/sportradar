@@ -139,7 +139,7 @@ func FetchSchedule(c http.Client, t time.Time, st sr.SeasonType, apiKey string) 
 	}
 	defer resp.Body.Close()
 	if resp.StatusCode != http.StatusOK {
-		return Schedule{}, fmt.Errorf("invalid response code from sport radar game summary request: %s %d", url, resp.StatusCode)
+		return Schedule{}, fmt.Errorf("invalid response code from sportradar mlb schedule request: %s %d", url, resp.StatusCode)
 	}
 
 	respBytes, err := ioutil.ReadAll(resp.Body)
