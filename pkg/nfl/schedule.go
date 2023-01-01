@@ -3,11 +3,9 @@ package nfl
 import (
 	"encoding/json"
 	"fmt"
+	sr "github.com/playback-sports/sportradar/pkg/base"
 	"io/ioutil"
 	"net/http"
-	"time"
-
-	sr "github.com/playback-sports/sportradar/pkg/base"
 )
 
 type srScheduleBroadcast struct {
@@ -125,8 +123,8 @@ func srScheduleConvert(s srSchedule) Schedule {
 
 var scheduleURLTemplate = "https://api.sportradar.us/nfl/official/production/v7/en/games/%d/%s/schedule.json?api_key=%s"
 
-func scheduleURL(t time.Time, st sr.SeasonType, apiKey string) string {
-	return fmt.Sprintf(scheduleURLTemplate, t.Year(), st, apiKey)
+func scheduleURL(year int, st sr.SeasonType, apiKey string) string {
+	return fmt.Sprintf(scheduleURLTemplate, year, st, apiKey)
 }
 
 func PrettyStruct(data interface{}) (string, error) {
@@ -137,8 +135,8 @@ func PrettyStruct(data interface{}) (string, error) {
 	return string(val), nil
 }
 
-func FetchSchedule(c http.Client, t time.Time, st sr.SeasonType, apiKey string) (Schedule, error) {
-	url := scheduleURL(t, st, apiKey)
+func FetchSchedule(c http.Client, year int, st sr.SeasonType, apiKey string) (Schedule, error) {
+	url := scheduleURL(year, st, apiKey)
 	req, err := http.NewRequest(http.MethodGet, url, nil)
 	if err != nil {
 		return Schedule{}, err

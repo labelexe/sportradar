@@ -37,8 +37,7 @@ func TestMLBSchedule(t *testing.T) {
 		},
 	})
 
-	now := time.Now()
-	schedule, err := client.MLBSchedule(now, sr.SeasonTypeRegular)
+	schedule, err := client.MLBSchedule(2022, sr.SeasonTypeRegular)
 	assert.NoError(t, err)
 	assert.Equal(t, "MLB", schedule.League.Alias)
 	assert.NotEmpty(t, schedule.Games)
@@ -54,8 +53,7 @@ func TestNBASchedule(t *testing.T) {
 		},
 	})
 
-	now := time.Now()
-	schedule, err := client.NBASchedule(now, sr.SeasonTypeRegular)
+	schedule, err := client.NBASchedule(2022, sr.SeasonTypeRegular)
 	assert.NoErrorf(t, err, "%s", err)
 	assert.NotEmpty(t, schedule.Season)
 	assert.NotEmpty(t, schedule.Season.ID)
@@ -74,8 +72,7 @@ func TestNHLSchedule(t *testing.T) {
 		},
 	})
 
-	now := time.Now()
-	schedule, err := client.NHLSchedule(now, sr.SeasonTypeRegular)
+	schedule, err := client.NHLSchedule(2022, sr.SeasonTypeRegular)
 	assert.NoErrorf(t, err, "%s", err)
 	assert.NotEmpty(t, schedule.Season)
 	assert.NotEmpty(t, schedule.Season.ID)
@@ -94,8 +91,7 @@ func TestNCAAFSchedule(t *testing.T) {
 		},
 	})
 
-	now := time.Now()
-	schedule, err := client.NCAAFSchedule(now, sr.SeasonTypeRegular)
+	schedule, err := client.NCAAFSchedule(2022, sr.SeasonTypeRegular)
 	assert.NoErrorf(t, err, "%s", err)
 	assert.NotEmpty(t, schedule.ID)
 	assert.NotEmpty(t, schedule.Weeks)
@@ -112,8 +108,7 @@ func TestNCAAMBSchedule(t *testing.T) {
 		},
 	})
 
-	now := time.Now()
-	schedule, err := client.NCAAMBSchedule(now, sr.SeasonTypeRegular)
+	schedule, err := client.NCAAMBSchedule(2022, sr.SeasonTypeRegular)
 	assert.NoErrorf(t, err, "%s", err)
 	assert.NotEmpty(t, schedule.Season)
 	assert.NotEmpty(t, schedule.Season.ID)
